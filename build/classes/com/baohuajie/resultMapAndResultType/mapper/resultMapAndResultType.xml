@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baohuajie.resultMapAndResultType.resultMapAndResultType">
+	<!-- 测试resultType,resultType非常适合返回jdk的提供的类型 -->
+	<select id="resultTypeHashMap" resultType="java.util.HashMap">
+		select * from iwelan_table t
+	</select>
+	<select id="resultTypeInteger" resultType="java.lang.Integer">
+		select count(t.num) as total from iwelan_table t
+	</select>
+	<select id="resultTypePerson" resultType="com.baohuajie.resultMapAndResultType.bean.Person">
+		select t.num,t.name as total from iwelan_table t
+	</select>
+	<resultMap id="resultTypeResultMap" type="com.baohuajie.resultMapAndResultType.bean.Person">
+		<id property="num" column="num" jdbcType="VARCHAR"/>
+		<result property="name" column="name" jdbcType="VARCHAR"/>
+	</resultMap>
+	<select id="resultTypePersonMap" resultMap="resultTypeResultMap">
+		select t.num,t.name as total from iwelan_table t
+	</select>
+</mapper>
