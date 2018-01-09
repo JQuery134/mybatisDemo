@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baohuajie.cache.MyBatisCacheTest">
+	<cache></cache>
+	<select id="cacheTest" resultType="hashMap">
+		select count(t.num) as total from iwelan_table t
+	</select>
+	<select id="cacheTestAll" resultType="hashMap">
+		select * from iwelan_table t
+	</select>
+</mapper>
